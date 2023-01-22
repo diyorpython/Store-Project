@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Invoices {% endblock title %}
+
+{% block content %}
+{% if invoice %}
+<div class="container">
+    <div class="col-md-12 my-5">
+      <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Datetime</th>
+              <th>Transaction</th>
+              <th>Customer</th>
+              <th>Total item</th>
+              <th>Total amount</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          {% for item in invoice %}
+          <div>
+            <tbody>
+              <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.date_updated }}</td>
+                <td>{{ item.transaction }}</td>
+                <td>{{ item.customer }}</td>
+                {% for invoiceitem in invoiceitems %}
+                {% if invoiceitem.invoice == item %}
+                <td>{{ invoiceitem.quantity }}</td>
+                {% endif %}
+                {% endfor %}
+                <td>{{ item.total }}</td>
+                <td><button type="button" class="btn btn-danger"><a href="{% url 'delete' item.id %}" style="text-decoration: none; color:black;">Delete</a></button></td>
+              </tr>
+            </tbody>
+          </div>
+          {% endfor %}
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="container">
+        <div class="col-md-12">
+            <h1 style="text-align: center;">Invoices is Empty</h1>
+        </div>
+</div>
+{% endif %}
+{% endblock content %}
