@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            {% if user1.image %}
+            <div class="card-body text-center">
+              <img src="{{ user1.image.url }}" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              {% if user.full_name %}
+              <h5 class="my-3">{{ user.full_name }}</h5>
+              <p class="text-muted mb-1">{{ user.username }}</p>
+              <p class="text-muted mb-4">{{ usert.adress }}</p>
+              {% endif %}
+            </div>
+            {% else %}
+            <div class="card-body text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                  class="rounded-circle img-fluid" style="width: 150px;">
+                <p class="text-muted mb-1">{{ user.username }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              {% if user.full_name %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.full_name }}</p>
+                </div>
+              </div>
+              <hr>
+              {% endif %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.email }}</p>
+                </div>
+              </div>
+              <hr>
+              {% if user1.phone_number %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user1.phone_number }}</p>
+                </div>
+              </div>
+              <hr>
+              {% endif %}
+              {% if user1.mobile_number %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user1.mobile_number }}</p>
+                </div>
+              </div>
+              <hr>
+              {% endif %}
+              {% if user.addres %}
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.addres }}</p>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <a href="{% url 'edit_user' %}" style="text-decoration: none;"><button type="submit" class="btn btn-warning"><img src="https://img.icons8.com/external-thin-kawalan-studio/24/null/external-edit-user-interface-thin-kawalan-studio.png"/> Edit</button></a>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,365 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-09 18:24+0500\n"
+"PO-Revision-Date: 2023-02-09 18:31+0500\n"
+"Last-Translator: Anonymous User <admin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\config\settings.py:137
+msgid "English"
+msgstr "Inglizcha"
+
+#: .\config\settings.py:138
+msgid "Russian"
+msgstr "Ruscha"
+
+#: .\config\settings.py:139
+msgid "Uzbek"
+msgstr "O'zbekcha"
+
+#: .\templates\auth\login.html:11
+#: .\templates\auth\password_reset_complete.html:7
+msgid "Log in"
+msgstr "Chiqish"
+
+#: .\templates\auth\login.html:17
+msgid "Forgot password?"
+msgstr "Parolni unutdingizmi?"
+
+#: .\templates\auth\login.html:18
+msgid "Haven't got account?"
+msgstr "Akkauntingiz yo'qmi?"
+
+#: .\templates\auth\login.html:21
+msgid "Enter"
+msgstr "Kirish"
+
+#: .\templates\auth\password_reset.html:8
+msgid "Reset Password"
+msgstr "Parolni tiklash"
+
+#: .\templates\auth\password_reset.html:10
+msgid "Forgotten your password? Enter your email address below, and we"
+msgstr ""
+"Parolni unutdingizmi? Quyida elektron pochta manzilingizni kiriting va biz"
+
+#: .\templates\auth\password_reset.html:14
+msgid "Send email"
+msgstr "Email yuborish"
+
+#: .\templates\auth\password_reset_complete.html:4
+msgid "Password reset complete"
+msgstr "Parolni tiklash tugallandi"
+
+#: .\templates\auth\password_reset_complete.html:6
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"Parolingiz oʻrnatildi. Siz hozir davom etib, tizimga kirishingiz mumkin."
+
+#: .\templates\auth\password_reset_confirm.html:8
+msgid "Password Reset Confirm"
+msgstr "Parolni tiklashni tasdiqlang"
+
+#: .\templates\auth\password_reset_confirm.html:10
+msgid "Please enter your new password."
+msgstr "Iltimos, yangi parolingizni kiriting."
+
+#: .\templates\auth\password_reset_confirm.html:14
+msgid "Reset password"
+msgstr "Parolni tiklash"
+
+#: .\templates\auth\password_reset_done.html:5
+msgid "Password reset sent"
+msgstr "Parolni tiklash yuborildi"
+
+#: .\templates\auth\password_reset_done.html:7
+msgid "We"
+msgstr "Biz"
+
+#: .\templates\auth\register.html:4 .\templates\auth\register.html:18
+msgid "Registration"
+msgstr "Roʻyxatdan oʻtish"
+
+#: .\templates\auth\register.html:14
+msgid "Registratsiya"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\auth\verify_email.html:8
+msgid "Verify code"
+msgstr "Kodni tasdiqlang"
+
+#: .\templates\auth\verify_email.html:10
+msgid "We send code to your email. Please enter code"
+msgstr "Kodni elektron pochtangizga yuboramiz. Iltimos, kodni kiriting"
+
+#: .\templates\auth\verify_email.html:18
+msgid "Send code"
+msgstr "Kodni yuboring"
+
+#: .\templates\base.html:7
+msgid "Home"
+msgstr "Uy"
+
+#: .\templates\base.html:19
+msgid "Shop"
+msgstr "Do'kon"
+
+#: .\templates\base.html:26
+msgid "Product"
+msgstr "Mahsulot"
+
+#: .\templates\base.html:29 .\templates\core\detail.html:13
+msgid "Category"
+msgstr "Kategoriya"
+
+#: .\templates\base.html:32
+msgid "Invoice"
+msgstr "Invoyis"
+
+#: .\templates\base.html:38
+msgid "Language"
+msgstr "Tillar"
+
+#: .\templates\base.html:40
+msgid "UZB"
+msgstr "UZB"
+
+#: .\templates\base.html:41
+msgid "RUS"
+msgstr "RUS"
+
+#: .\templates\base.html:42
+msgid "ENG"
+msgstr "ENG"
+
+#: .\templates\base.html:50
+msgid "Log out"
+msgstr "Chiqish"
+
+#: .\templates\base.html:54
+msgid "Sign in"
+msgstr "Tizimga kirish"
+
+#: .\templates\base.html:57
+msgid "Sign up"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\core\add_categories.html:11
+msgid "Add New Category "
+msgstr "Yangi toifa qo'shing"
+
+#: .\templates\core\add_categories.html:15
+#: .\templates\core\add_product.html:15
+msgid "Succes"
+msgstr "Muvaffaqiyatli"
+
+#: .\templates\core\add_product.html:5
+msgid "Add New Product "
+msgstr "Yangi mahsulot qo'shish"
+
+#: .\templates\core\add_product.html:11
+msgid "Add New Poduct "
+msgstr "Yangi mahsulot qo'shish"
+
+#: .\templates\core\delete_categories.html:9
+#: .\templates\core\delete_product.html:9
+#: .\templates\invoice\delete_invoice.html:9
+msgid "Confirmation"
+msgstr "Tasdiqlash"
+
+#: .\templates\core\delete_categories.html:11
+msgid "Are you sure delete that category"
+msgstr "Siz bu toifani o'chirib tashlaysizmi?"
+
+#: .\templates\core\delete_categories.html:12
+#: .\templates\core\delete_product.html:12
+#: .\templates\invoice\delete_invoice.html:12
+msgid "Continue"
+msgstr "Davom eting"
+
+#: .\templates\core\delete_categories.html:12
+#: .\templates\core\delete_product.html:12
+#: .\templates\invoice\delete_invoice.html:12
+msgid "Close"
+msgstr "Yopish"
+
+#: .\templates\core\delete_product.html:11
+msgid "Are you sure you want to delete the "
+msgstr "Haqiqatan ham oʻchirib tashlamoqchimisiz"
+
+#: .\templates\core\delete_product.html:11
+msgid "on id "
+msgstr "id bo'yicha"
+
+#: .\templates\core\detail.html:4 .\templates\core\detail.html:10
+msgid "Detail"
+msgstr "Tafsilot"
+
+#: .\templates\core\detail.html:17
+msgid "Product name"
+msgstr "Mahsulot nomi"
+
+#: .\templates\core\detail.html:21
+msgid "Code"
+msgstr "Kod"
+
+#: .\templates\core\detail.html:25
+msgid "Product description"
+msgstr "Mahsulot tavsifi"
+
+#: .\templates\core\detail.html:29
+msgid "Product price"
+msgstr "Mahsulot narxi"
+
+#: .\templates\core\detail.html:36
+msgid "InActive"
+msgstr "Faol emas"
+
+#: .\templates\core\detail.html:38 .\templates\core\list_product.html:39
+msgid "Active"
+msgstr "Faol"
+
+#: .\templates\core\edit_categories.html:4
+#: .\templates\core\edit_categories.html:10
+msgid "Edit Categories"
+msgstr "Kategoriya"
+
+#: .\templates\core\edit_categories.html:14
+#: .\templates\core\edit_product.html:14
+#: .\templates\core\list_categories.html:25
+#: .\templates\core\list_product.html:26
+msgid "Edit"
+msgstr "Tahrirlash"
+
+#: .\templates\core\edit_product.html:4
+msgid "Edit Product "
+msgstr "Mahsulotni tahrirlash"
+
+#: .\templates\core\edit_product.html:10
+msgid "Edit Product"
+msgstr "Mahsulotni tahrilash"
+
+#: .\templates\core\index.html:3
+msgid "Home Page"
+msgstr "Bosh sahifa"
+
+#: .\templates\core\index.html:8
+msgid "Show Stats"
+msgstr "Statistikani ko'rsatish"
+
+#: .\templates\core\list_categories.html:8
+msgid "Categories"
+msgstr "Kategoriyalar"
+
+#: .\templates\core\list_categories.html:10
+#: .\templates\core\list_product.html:10
+msgid "Search"
+msgstr "Izlash"
+
+#: .\templates\core\list_categories.html:13
+msgid "+ Add new category"
+msgstr "+ Yangi toifa qo'shing"
+
+#: .\templates\core\list_categories.html:21
+#: .\templates\core\list_product.html:21 .\templates\invoice\invoice.html:14
+msgid "Datetime"
+msgstr "Sana vaqti"
+
+#: .\templates\core\list_categories.html:22
+#: .\templates\core\list_product.html:22
+msgid "Name"
+msgstr "Ism"
+
+#: .\templates\core\list_categories.html:23
+#: .\templates\core\list_product.html:23
+msgid "Description"
+msgstr "Tavsif"
+
+#: .\templates\core\list_categories.html:24
+#: .\templates\core\list_product.html:24
+msgid "Status"
+msgstr "Holat"
+
+#: .\templates\core\list_categories.html:26
+#: .\templates\core\list_product.html:27 .\templates\invoice\invoice.html:19
+#: .\templates\invoice\invoice.html:36
+msgid "Delete"
+msgstr "Oʻchirish"
+
+#: .\templates\core\list_categories.html:38
+msgid "Stack-In"
+msgstr "Bor"
+
+#: .\templates\core\list_categories.html:40
+msgid "Stack-Out"
+msgstr "Qolmadi"
+
+#: .\templates\core\list_product.html:8
+msgid "Products"
+msgstr "Mahsulot"
+
+#: .\templates\core\list_product.html:13
+msgid "+ Add new product"
+msgstr "+ Yangi mahsulot qo'shish"
+
+#: .\templates\core\list_product.html:25
+msgid "Price"
+msgstr "Narxi"
+
+#: .\templates\core\list_product.html:41
+msgid "Inactive"
+msgstr "Faol emas"
+
+#: .\templates\invoice\delete_invoice.html:11
+msgid "Do you want to delete"
+msgstr "Haqiqatan ham oʻchirib tashlamoqchimisiz"
+
+#: .\templates\invoice\delete_invoice.html:11
+msgid "invoice on id"
+msgstr "identifikatordagi invoyis"
+
+#: .\templates\invoice\invoice.html:15
+msgid "Transaction"
+msgstr "Tranzaksiya"
+
+#: .\templates\invoice\invoice.html:16
+msgid "Customer"
+msgstr "Mijoz"
+
+#: .\templates\invoice\invoice.html:17
+msgid "Total item"
+msgstr "Jami element"
+
+#: .\templates\invoice\invoice.html:18
+msgid "Total amount"
+msgstr "Umumiy hisob"
+
+#: .\templates\invoice\invoice.html:49
+msgid "Invoices are Empty"
+msgstr "Invoyis bo‘sh"
+
+#~ msgid "Haven"
+#~ msgstr "Haven"
+
+#~ msgid "Category name"
+#~ msgstr "Kategoriya nomi"
+
+#~ msgid "Category description"
+#~ msgstr "Mahsulot tavsifi"
+
+#~ msgid "Product status"
+#~ msgstr "Mahsulot"

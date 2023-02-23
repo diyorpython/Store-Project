@@ -1,0 +1,364 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-09 18:24+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\config\settings.py:137
+msgid "English"
+msgstr "Английский"
+
+#: .\config\settings.py:138
+msgid "Russian"
+msgstr "Русский"
+
+#: .\config\settings.py:139
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: .\templates\auth\login.html:11
+#: .\templates\auth\password_reset_complete.html:7
+msgid "Log in"
+msgstr "Выйти"
+
+#: .\templates\auth\login.html:17
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: .\templates\auth\login.html:18
+msgid "Haven't got account?"
+msgstr ""
+
+#: .\templates\auth\login.html:21
+msgid "Enter"
+msgstr "Входить"
+
+#: .\templates\auth\password_reset.html:8
+msgid "Reset Password"
+msgstr "Сброс пароля"
+
+#: .\templates\auth\password_reset.html:10
+msgid "Forgotten your password? Enter your email address below, and we"
+msgstr "Забыли пароль? Введите свой адрес электронной почты ниже, и мы"
+
+#: .\templates\auth\password_reset.html:14
+msgid "Send email"
+msgstr "Отправить письмо"
+
+#: .\templates\auth\password_reset_complete.html:4
+msgid "Password reset complete"
+msgstr "Сброс пароля завершен"
+
+#: .\templates\auth\password_reset_complete.html:6
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr "Ваш пароль установлен. Вы можете продолжить и войти в систему сейчас."
+
+#: .\templates\auth\password_reset_confirm.html:8
+msgid "Password Reset Confirm"
+msgstr "Сброс пароля Подтвердить"
+
+#: .\templates\auth\password_reset_confirm.html:10
+msgid "Please enter your new password."
+msgstr "Пожалуйста, введите новый пароль."
+
+#: .\templates\auth\password_reset_confirm.html:14
+msgid "Reset password"
+msgstr "Сброс пароля"
+
+#: .\templates\auth\password_reset_done.html:5
+msgid "Password reset sent"
+msgstr "Сброс пароля отправлен"
+
+#: .\templates\auth\password_reset_done.html:7
+msgid "We"
+msgstr "Мы"
+
+#: .\templates\auth\register.html:4 .\templates\auth\register.html:18
+msgid "Registration"
+msgstr "Описание"
+
+#: .\templates\auth\register.html:14
+msgid "Registratsiya"
+msgstr "Регистрация"
+
+#: .\templates\auth\verify_email.html:8
+msgid "Verify code"
+msgstr "Подтвердить код"
+
+#: .\templates\auth\verify_email.html:10
+msgid "We send code to your email. Please enter code"
+msgstr "Мы отправляем код на вашу электронную почту. Пожалуйста, введите код"
+
+#: .\templates\auth\verify_email.html:18
+msgid "Send code"
+msgstr "Отправить код"
+
+#: .\templates\base.html:7
+msgid "Home"
+msgstr "Дом"
+
+#: .\templates\base.html:19
+msgid "Shop"
+msgstr "Магазин"
+
+#: .\templates\base.html:26
+msgid "Product"
+msgstr "Продукт"
+
+#: .\templates\base.html:29 .\templates\core\detail.html:13
+msgid "Category"
+msgstr "Категория"
+
+#: .\templates\base.html:32
+msgid "Invoice"
+msgstr "Счет"
+
+#: .\templates\base.html:38
+msgid "Language"
+msgstr "Язык"
+
+#: .\templates\base.html:40
+msgid "UZB"
+msgstr "узбекский"
+
+#: .\templates\base.html:41
+msgid "RUS"
+msgstr "Русский"
+
+#: .\templates\base.html:42
+msgid "ENG"
+msgstr "Английский"
+
+#: .\templates\base.html:50
+msgid "Log out"
+msgstr "Выйти"
+
+#: .\templates\base.html:54
+msgid "Sign in"
+msgstr "Войти"
+
+#: .\templates\base.html:57
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: .\templates\core\add_categories.html:11
+msgid "Add New Category "
+msgstr "Добавить новую категорию"
+
+#: .\templates\core\add_categories.html:15
+#: .\templates\core\add_product.html:15
+msgid "Succes"
+msgstr "Успех"
+
+#: .\templates\core\add_product.html:5
+msgid "Add New Product "
+msgstr "Добавить новый продукт"
+
+#: .\templates\core\add_product.html:11
+msgid "Add New Poduct "
+msgstr "Добавить новый продукт"
+
+#: .\templates\core\delete_categories.html:9
+#: .\templates\core\delete_product.html:9
+#: .\templates\invoice\delete_invoice.html:9
+msgid "Confirmation"
+msgstr "Подтверждение"
+
+#: .\templates\core\delete_categories.html:11
+msgid "Are you sure delete that category"
+msgstr "Вы уверены, что удалили эту категорию?"
+
+#: .\templates\core\delete_categories.html:12
+#: .\templates\core\delete_product.html:12
+#: .\templates\invoice\delete_invoice.html:12
+msgid "Continue"
+msgstr "Продолжать"
+
+#: .\templates\core\delete_categories.html:12
+#: .\templates\core\delete_product.html:12
+#: .\templates\invoice\delete_invoice.html:12
+msgid "Close"
+msgstr "Закрывать"
+
+#: .\templates\core\delete_product.html:11
+msgid "Are you sure you want to delete the "
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\templates\core\delete_product.html:11
+msgid "on id "
+msgstr "по идентификатору"
+
+#: .\templates\core\detail.html:4 .\templates\core\detail.html:10
+msgid "Detail"
+msgstr "Деталь"
+
+#: .\templates\core\detail.html:17
+msgid "Product name"
+msgstr "наименование товара"
+
+#: .\templates\core\detail.html:21
+msgid "Code"
+msgstr "Код"
+
+#: .\templates\core\detail.html:25
+msgid "Product description"
+msgstr "Описание товара"
+
+#: .\templates\core\detail.html:29
+msgid "Product price"
+msgstr "Цена продукта"
+
+#: .\templates\core\detail.html:36
+msgid "InActive"
+msgstr "Неактивный"
+
+#: .\templates\core\detail.html:38 .\templates\core\list_product.html:39
+msgid "Active"
+msgstr "Активный"
+
+#: .\templates\core\edit_categories.html:4
+#: .\templates\core\edit_categories.html:10
+msgid "Edit Categories"
+msgstr "Категория"
+
+#: .\templates\core\edit_categories.html:14
+#: .\templates\core\edit_product.html:14
+#: .\templates\core\list_categories.html:25
+#: .\templates\core\list_product.html:26
+msgid "Edit"
+msgstr "Редактировать"
+
+#: .\templates\core\edit_product.html:4
+msgid "Edit Product "
+msgstr "Редактировать продукт"
+
+#: .\templates\core\edit_product.html:10
+msgid "Edit Product"
+msgstr "Редактировать продукт"
+
+#: .\templates\core\index.html:3
+msgid "Home Page"
+msgstr "Домашняя страница"
+
+#: .\templates\core\index.html:8
+msgid "Show Stats"
+msgstr "Показать статистику"
+
+#: .\templates\core\list_categories.html:8
+msgid "Categories"
+msgstr "Категория"
+
+#: .\templates\core\list_categories.html:10
+#: .\templates\core\list_product.html:10
+msgid "Search"
+msgstr ""
+
+#: .\templates\core\list_categories.html:13
+msgid "+ Add new category"
+msgstr "+ Добавить новую категорию"
+
+#: .\templates\core\list_categories.html:21
+#: .\templates\core\list_product.html:21 .\templates\invoice\invoice.html:14
+msgid "Datetime"
+msgstr "Дата и время"
+
+#: .\templates\core\list_categories.html:22
+#: .\templates\core\list_product.html:22
+msgid "Name"
+msgstr "Имя"
+
+#: .\templates\core\list_categories.html:23
+#: .\templates\core\list_product.html:23
+msgid "Description"
+msgstr "Описание"
+
+#: .\templates\core\list_categories.html:24
+#: .\templates\core\list_product.html:24
+msgid "Status"
+msgstr "Положение дел"
+
+#: .\templates\core\list_categories.html:26
+#: .\templates\core\list_product.html:27 .\templates\invoice\invoice.html:19
+#: .\templates\invoice\invoice.html:36
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\templates\core\list_categories.html:38
+msgid "Stack-In"
+msgstr "Есть"
+
+#: .\templates\core\list_categories.html:40
+msgid "Stack-Out"
+msgstr "Не осталось"
+
+#: .\templates\core\list_product.html:8
+msgid "Products"
+msgstr "Продукт"
+
+#: .\templates\core\list_product.html:13
+msgid "+ Add new product"
+msgstr "+ Добавить новый продукт"
+
+#: .\templates\core\list_product.html:25
+msgid "Price"
+msgstr "Цена"
+
+#: .\templates\core\list_product.html:41
+msgid "Inactive"
+msgstr "Неактивный"
+
+#: .\templates\invoice\delete_invoice.html:11
+msgid "Do you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\templates\invoice\delete_invoice.html:11
+msgid "invoice on id"
+msgstr "счет-фактура на удостоверение личности"
+
+#: .\templates\invoice\invoice.html:15
+msgid "Transaction"
+msgstr "Сделка"
+
+#: .\templates\invoice\invoice.html:16
+msgid "Customer"
+msgstr "Покупатель"
+
+#: .\templates\invoice\invoice.html:17
+msgid "Total item"
+msgstr "Всего товара"
+
+#: .\templates\invoice\invoice.html:18
+msgid "Total amount"
+msgstr "Общая сумма"
+
+#: .\templates\invoice\invoice.html:49
+msgid "Invoices are Empty"
+msgstr "Счета пусты"
+
+#~ msgid "Haven"
+#~ msgstr "Гавань"
+
+#~ msgid "Category name"
+#~ msgstr "Категория"
+
+#~ msgid "Category description"
+#~ msgstr "Описание товара"
+
+#~ msgid "Product status"
+#~ msgstr "Продукт"

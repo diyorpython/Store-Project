@@ -5,15 +5,20 @@ from .models import (
     Stock,
     Invoice,
     InvoiceItem,
-    Customuser
+    Customuser,
+    History,
+    Sales,
+    Customuser,
+    UserProfile
 )
+from modeltranslation.admin import TranslationAdmin
 
 
 uneditable_fields = ('id', 'date_created', 'date_updated')
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = (
         'name',
         'status'
@@ -22,7 +27,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     list_display = (
         'category',
         'name',
@@ -75,3 +80,25 @@ class CustomuserAdmin(admin.ModelAdmin):
         'date_joined'
     )
     fields = [field.name for field in Customuser._meta.fields if field.name not in uneditable_fields]
+
+@admin.register(History)
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'stock',
+        'quantity',
+        'type'
+    )
+    fields = [field.name for field in History._meta.fields if field.name not in uneditable_fields]
+
+
+@admin.register(Sales)
+class SalesAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'stock',
+        'quantity'
+    )
+    fields = [field.name for field in Sales._meta.fields if field.name not in uneditable_fields]
+
+
+admin.site.register(UserProfile)

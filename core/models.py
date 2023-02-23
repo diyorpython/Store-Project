@@ -13,6 +13,7 @@ from django.contrib.auth.models import (
 )
 
 
+
 def min_value_validator(value):
     if value < 0:
         raise ValidationError(
@@ -111,7 +112,7 @@ class Product(BaseModel):
         if stock.exists():
             if stock[0].type == '1':
                 self.status = '1'
-            else:
+            else: 
                 self.status = '0'
         super(Product, self).save(*args, **kwargs)
 
@@ -125,7 +126,7 @@ class Stock(BaseModel):
         ('1', 'Stock-in')
     )
 
-    product = models.ForeignKey(
+    product = models.OneToOneField(
         to=Product,
         on_delete=models.CASCADE
     )
@@ -144,17 +145,37 @@ class Stock(BaseModel):
         verbose_name = 'Stock'
         verbose_name_plural = 'Stock'
         db_table = 'Stock'
+        ordering = ['-date_created']
 
-    def save(self, *args, **kwargs):
-        product = Product.objects.filter(id=self.product.id)
+    def save(self, commit=True, *args, **kwargs):
+        product = Product.objects.filter(id=self.product.pk)
         if product.exists():
-            if self.quantity > 0:
-                self.type = '1'
-                Product.objects.update(id=product[0].id, status='1')
+            if not self.pk:
+                if self.quantity > 0:
+                    self.type = '1'
+                    product = Product.objects.get(id=product.first().pk)
+                    product.status = '1'
+                    product.save()
+                else:
+                    self.type = '0'
+                    product = Product.objects.get(id=product.first().pk)
+                    product.status = '0'
+                    product.save()
+                super(Stock, self).save(*args, **kwargs)
+                stock = Stock.objects.get(id=self.pk)
+                if commit:
+                    History.objects.create(stock=stock, quantity=self.quantity, type=self.type)
             else:
-                self.type = '0'
-                Product.objects.update(id=product[0].id, status='0')
-        super(Stock, self).save(*args, **kwargs)
+                stock = Stock.objects.get(id=self.pk)
+                if self.quantity > stock.quantity:
+                    if commit:
+                        History.objects.create(stock=stock, quantity=self.quantity-stock.quantity, type='1')
+                elif self.quantity == stock.quantity:
+                    pass
+                else:
+                    if commit:
+                        History.objects.create(stock=stock, quantity=stock.quantity-self.quantity, type='0')
+                super(Stock, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.product.name
@@ -218,7 +239,9 @@ class InvoiceItem(BaseModel):
             raise ValueError('Oops we haven\'t got enaugh product!')
         else:
             stock_quantity = self.stock.quantity - self.quantity
-            Stock.objects.update(id=self.stock.id, quantity=stock_quantity)
+            stock = Stock.objects.get(id=self.stock.pk)
+            stock.quantity = stock_quantity
+            stock.save()
         return super(InvoiceItem, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -253,3 +276,108 @@ class Customuser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class History(BaseModel):
+    STOCK_IN = '1'
+    STOCK_OUT = '0'
+
+    TYPES = (
+        (STOCK_IN, 'stock-in'),
+        (STOCK_OUT, 'stock-out')
+    )
+
+    stock = models.ForeignKey(
+        to=Stock,
+        on_delete=models.CASCADE
+    )
+    quantity = models.PositiveBigIntegerField(
+        verbose_name='quantity'
+    )
+    type = models.CharField(
+        verbose_name='type',
+        max_length=12,
+        choices=TYPES
+    )
+
+    class Meta:
+        verbose_name = 'History'
+        verbose_name_plural = 'Histories'
+        db_table = 'History'
+        ordering = ['-date_created']
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            history = History.objects.get(id=self.pk)
+            if history.quantity < self.quantity:
+                self.stock.quantity += self.quantity - history.quantity
+                self.stock.save(commit=False)
+            else:
+                self.stock.quantity -= history.quantity - self.quantity
+                self.stock.save(commit=False)
+        elif self.quantity == 0:
+            pass
+        super(History, self).save(*args, **kwargs)
+    
+    def delete(self, *args, **kwargs):
+        if self.type == self.STOCK_IN:
+            if self.stock.quantity - self.quantity >= 0:
+                self.stock.quantity -= self.quantity
+                self.stock.save(commit=False)
+            else:
+                raise ValueError('Haven\'t got enaugh product!')
+        else:
+            if self.stock.quantity + self.quantity >= 0:
+                self.stock.quantity += self.quantity
+                self.stock.save(commit=False)
+            else:
+                raise ValueError('Haven\'t got enaugh product!')
+        super(History, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        return self.stock.product.name
+
+
+class Sales(BaseModel):
+    user = models.CharField(
+        verbose_name='User',
+        max_length=255
+    )
+    stock = models.ForeignKey(
+        to=Stock,
+        on_delete=models.CASCADE,
+        related_name='Product'
+    )
+    quantity = models.PositiveBigIntegerField(
+        verbose_name='Quantity'
+    )
+
+    class Meta:
+        verbose_name = 'Sale'
+        verbose_name_plural = 'Sales'
+        db_table = 'Sales'
+        ordering = ['-date_created']
+
+    def save(self, *args, **kwargs):
+        if self.quantity > 0:
+            if self.stock.quantity - self.quantity >= 0:
+                self.stock.quantity -= self.quantity
+                self.stock.save()
+            else:
+                raise ValueError('Haven\'t got enaugh product!')
+            super(Sales, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.user} - {self.stock.product.name}'
+
+class UserProfile(models.Model):
+    user          = models.OneToOneField(to=Customuser, on_delete=models.CASCADE)
+    bio           = models.TextField()
+    image         = models.ImageField(null=True, blank=True, upload_to="profiles")
+    phone_number  = models.CharField(max_length=255, null=True, blank=True)
+    mobile_number = models.CharField(max_length=255, null=True, blank=True)
+    
+    objects = models.Manager()
+    
+    def __str__(self) -> str:
+        return f"{self.user.username}"

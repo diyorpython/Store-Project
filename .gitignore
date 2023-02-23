@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 store_project_django
+media

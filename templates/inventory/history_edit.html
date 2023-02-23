@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load last_index %}
+{% load first_index %}
+{% load crispy_forms_tags %}
+    
+    {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'style/edit_history/edit_history.css' %}">
+    {% endblock extra_styles %}
+    
+    {% block title %} Inventory {% endblock title %}
+
+    {% block content %}
+    <!-- SECTION -->
+    <section class="section" id="section">
+        <div class="container" id="container">
+            <div class="section__header">
+                <div class="title">
+                    Edit History
+                </div>
+            </div>
+            <div class="form">
+                <form action="{% url 'edit_history' pk %}" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="add_btn">
+                        <button type="submit" class="btn">
+                            Edit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'script/modal_action.js' %}"></script>
+    {% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+    {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'style/transaction/transaction_add.css' %}">
+    {% endblock extra_styles %}
+    
+    {% block title %} Inventory {% endblock title %}
+
+    {% block content %}
+    <!-- SECTION -->
+    <section class="section" id="section">
+        <div class="container" id="container">
+            <div class="section__header">
+                <div class="title">
+                    Add Transaction
+                </div>
+            </div>
+            <div class="form">
+                <form action="{% url 'transaction_add' %}" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="add_btn">
+                        <button type="submit" class="btn">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'script/modal_action.js' %}"></script>
+    {% endblock content %}

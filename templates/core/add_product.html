@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %} Add New Product {% endblock title %}
+{% block title %}{% trans 'Add New Product ' %} {% endblock title %}
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-3 my-5">
-            <h1 class="text-center text-primary">Add New Poduct </h1>
+            <h1 class="text-center text-primary">{% trans 'Add New Poduct ' %}</h1>
             <form action="{% url 'add_product'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit" class="btn btn-success">Succes</button>
+                <button type="submit" class="btn btn-success">{% trans 'Succes' %}</button>
             </form>
         </div>
     </div>

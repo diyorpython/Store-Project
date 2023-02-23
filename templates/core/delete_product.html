@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %} Delete Product {% endblock title %}
 
 {% block content %} 
 
     <div class="container" style="padding-top: 50px; text-align:center;">
         <div class="col-md-12">
-            <h2 style="color:black;">Confirmation</h2>
+            <h2 style="color:black;">{% trans 'Confirmation' %}</h2>
         <br>
-        <h3 style="margin-bottom: 30px;">Are you sure delete that product</h3>
-        <button style="margin-right: 30px;" type="button" class="btn btn-danger"><a href="{% url 'delete_confirm_product' pk %}" style="text-decoration: none; color:black ;">Continue</a></button> <button type="button" class="btn btn-light" style="background-color: rgba(126, 126, 126, 0.574); "><a style="text-decoration: none; color: black;" href="{% url 'product_list' %}">Close</a></button>
+        <h3 style="margin-bottom: 30px;">{% trans 'Are you sure you want to delete the ' %}<b>{{ product_info.name  }}</b> {% trans 'on id ' %}{{ pk }} ?</h3>
+        <button style="margin-right: 30px;" type="button" class="btn btn-danger"><a href="{% url 'delete_confirm_product' pk %}" style="text-decoration: none; color:black ;">{% trans 'Continue' %}</a></button> <button type="button" class="btn btn-light" style="background-color: rgba(126, 126, 126, 0.574); "><a style="text-decoration: none; color: black;" href="{% url 'product_list' %}">{% trans 'Close' %}</a></button>
         </div>
     </div>
 

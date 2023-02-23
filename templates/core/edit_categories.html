@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %} {%trans 'Edit Categories' %} {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3 my-5">
+            <h1 class="text-center text-primary">{%trans 'Edit Categories' %}</h1>
+            <form action="{% url 'edit_categories' pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-success">{%trans 'Edit' %}</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

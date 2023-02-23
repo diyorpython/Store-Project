@@ -106,8 +106,8 @@ class ActiveCategoryCustomManager(models.Manager):
 
 class ActiveProductCustomQuerySet(models.QuerySet):
     def all(self):
-        all_active_categories = self.filter(status='1')
-        return all_active_categories
+        all_active_products = self.filter(status='1')
+        return all_active_products
 
     def info(self, name):
         try:
@@ -167,6 +167,19 @@ class ActiveProductCustomQuerySet(models.QuerySet):
                 return 'Nothing found'
         return self.none()
 
+    def best(self):
+        products = model.Product.objects.all()
+        products_sales = []
+        for product in products:
+            sales = model.Sales.objects.filter(stock__product=product)
+            product_sales = []
+            if sales.exists():
+                for sale in sales:
+                    product_sales.append(sale.quantity)
+            else:
+                products_sales.append({'id': product.id, 'sum': 0})    
+            products_sales.append({'id': product.id, 'sum': sum(product_sales)})
+        products_sales.sort(key=['sum'])
 
 class ActiveProductCustomManager(models.Manager):
     def get_queryset(self):

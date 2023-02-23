@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load last_index %}
+{% load first_index %}
+{% load crispy_forms_tags %}
+
+    {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'style/inventory_action/inventory_action.css' %}">
+    {% endblock extra_styles %}
+    
+    {% block title %} Inventory {% endblock title %}
+
+
+    {% block content %}
+    <!-- SECTION -->
+    <section class="section" id="section">
+        <div class="container" id="container">
+            <div class="section__header">
+                <div class="title">
+                    Product Stock History
+                </div>
+                <div class="button">
+                    <span  class="plus-icon">
+                        <img src="{% static 'image/plus.svg' %}" alt="plus-icon" class="plus-icon-img">
+                    </span>
+                    <button class="add_stock-btn">
+                        <a href="{% url 'transaction_add' %}" class="href" style="color: #fff;">
+                            add transaction
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <div class="section__content">
+                <div class="product__detail">
+                    <div class="detail__title">
+                        <h2 class="title__txt">
+                            Product Details
+                        </h2>
+                    </div>
+                    {% if stock %}
+                        <div class="wrapper">
+                            <div class="code">
+                                <span class="title">
+                                    Code
+                                </span>
+                                <span class="content">
+                                    {{ stock.product.code }}
+                                </span> 
+                            </div>
+                            <div class="name">
+                                <span class="title">
+                                    Name
+                                </span>
+                                <span class="content">
+                                    {{ stock.product.name }}
+                                </span>
+                            </div>
+                            <div class="description">
+                                <span class="title">
+                                    Description
+                                </span>
+                                <span class="content">
+                                    {{ stock.product.description }}
+                                </span>
+                            </div>
+                            <div class="price"> 
+                                <span class="title">
+                                    Price
+                                </span>
+                                <span class="content">
+                                    {{ stock.product.price }}$
+                                </span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="history">
+                    <div class="title">
+                        <h2 class="title__txt">
+                            History
+                        </h2>
+                    </div>
+                    <div class="navbar">
+                        <div class="pagination__cnt">
+                            <span class="text-start">
+                                show
+                            </span>
+                            <span class="pagination__select-btn">
+                                <select name="pagination-cnt" class="pagination-cnt">
+                                    <option value="10">10</option>
+                                    <option value="8">8</option>
+                                    <option value="5" selected>5</option>
+                                </select>
+                            </span>
+                            <span class="text-end">
+                                entries
+                            </span>
+                        </div>
+                        <div class="search__input">
+                            <form action="" method="post" class="search__form">
+                                <label for="search" class="label">Search</label>
+                                <input type="text" name="query" class="search__input" id="search">
+                            </form>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <thead class="table__heading">
+                            <tr class="table__row">
+                                <th class="table__row-heading">
+                                    #
+                                </th>
+                                <th class="table__row-heading">
+                                    Date/Time
+                                </th>
+                                <th class="table__row-heading">
+                                    Quantity
+                                </th>
+                                <th class="table__row-heading">
+                                    Type
+                                </th>
+                                <th class="table__row-heading">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="table__body">
+                            {% if histories %}
+                                {% for history in histories %}
+                                    <tr class="table__row">
+                                        <td class="table__data">
+                                            {{ forloop.counter }}
+                                        </td>
+                                        <td class="table__data left">
+                                            <div class="wrapper-left" id="date">
+                                                {{ history.date_updated }}
+                                            </div>
+                                        </td>
+                                        <td class="table__data">
+                                                {{ history.quantity }}
+                                        </td>
+                                        <td class="table__data">
+                                            {% if history.type == '1' %}
+                                                <button class="type stock-in">
+                                                    Stock In
+                                                </button>
+                                            {% else %}
+                                                <button class="type stock-out">
+                                                    Stock Out
+                                                </button>
+                                            {% endif %}
+                                        </td>
+                                        <td class="table__data">
+                                            {% if history.type == '1' %}
+                                                <div class="wrapper">
+                                                    <div class="left">
+                                                        <a href="{% url 'edit_history' history.pk %}">
+                                                            <span class="link-to-edit">
+                                                                <img src="{% static 'image/edit-icon.svg' %}" alt="">
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="right">
+                                                        <span class="link-to-delete" id="{{ history.pk }}">
+                                                            <img src="{% static 'image/delete-icon.svg' %}" alt="">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <span class="hidden" id="{{ history.pk }}" hidden></span>
+                                                .......
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="pagination__result">
+                            <p class="text">
+                                {% if history_len == 0 %}
+                                {% elif history_len == 1 %}
+                                    Showing <span id="from">1</span> to <span id="to">1</span> of <span class="of">{{ history_len }}</span> entries
+                                {% else %}
+                                    Showing <span id="from">{% get_first_index histories all_histories %}</span> to <span id="to">{% get_last_index histories all_histories %}</span> of <span class="of">{{ history_len }}</span> entries
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="pagination-btn">
+                            {% if histories.has_other_pages %}
+                                {% if histories.has_previous %}
+                                    <a href="?page={{ histories.previous_page_number }}" class="prev-btn active">
+                                        Previous
+                                    </a>
+                                {% else %}
+                                    <span style="padding-right: 5px; color: #424242;">Previous</span>
+                                {% endif %}
+                                {% for page_number in histories.paginator.page_range %}
+                                    {% if histories.number == page_number %}
+                                        <a href="?page={{ page_number }}" class="page-number">
+                                            {{ page_number }}
+                                        </a>
+                                    {% elif page_number >= histories.number|add:-2 and page_number <= histories.number|add:2 %}
+                                        <a href="?page={{ page_number }}" class="page-number">
+                                            {{ page_number }}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if histories.has_next %}
+                                    <a href="?page={{ histories.next_page_number }}" class="next-btn active">
+                                        Next
+                                    </a>
+                                {% else %}
+                                    <span style="padding-left: 5px; color: #424242;">Next</span>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DELETE MODAL -->
+    <div class="delete__modal" id="delete__modal">
+        <div class="content">
+            <div class="container">
+                <div class="title">
+                    <h4 class="title-txt">
+                        Are you sure to delete this item?
+                    </h4>
+                </div>
+                <div class="buttons">
+                    <div class="cancel">
+                        <button class="cancel-btn" id="cancel-delete-stock-btn">
+                            <a class="link-cancel-delete-to-stock">
+                                Cancel
+                            </a>
+                        </button>
+                    </div>
+                    <div class="delete">
+                        <button class="delete-btn" id="delete-stock-btn">
+                            <a class="link-to-delete-stock">
+                                Delete
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'script/modal_action.js' %}"></script>
+    {% endblock content %}

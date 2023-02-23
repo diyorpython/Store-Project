@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load sum %}
+{% load last_index_home %}
+{% load first_index_home %}
+{% load crispy_forms_tags %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'style/inventory_home/inventory_home.css' %}">
+{% endblock extra_styles %}
+    
+{% block title %} Inventory {% endblock title %}
+
+
+    {% block content %}
+    <!-- SECTION -->
+    <section class="section" id="section">
+        <div class="container">
+            <div class="section__header">
+                <div class="title">
+                    Inventory
+                </div>
+                <div class="search">
+                    <form action="" class="search-form">
+                        <label for="search">Search</label>
+                        <input type="text" onkeyup="elasticSearch()" name="quary" id="search" class="search-input">
+                    </form>
+                </div>
+            </div>
+            <div class="section__content">
+                <table class="table" id="table">
+                    <thead class="table__heading">
+                        <tr class="table__row">
+                            <th class="table__row-heading">
+                                #
+                            </th>
+                            <th class="table__row-heading">
+                                Product
+                            </th>
+                            <th class="table__row-heading">
+                                Available Stock
+                            </th>
+                            <th class="table__row-heading">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body" id="table_body">
+                        {% if stocks %}
+                            {% for stock in stocks %}
+                                <tr class="table__row">
+                                    <td class="table__data table-id">
+                                        {{ forloop.counter }}
+                                    </td>
+                                    <td class="table__data left">
+                                        <div class="wrapper-left">
+                                            {{ stock.product.name }}
+                                        </div>
+                                    </td>
+                                    <td class="table__data right">
+                                        <div class="wrapper-right stock-quantity">
+                                            {{ stock.quantity }}
+                                        </div>
+                                    </td>
+                                    <td class="table__data">
+                                        <div class="wrapper">
+                                            <a href="{% url 'inventory_action' stock.pk %}" class="link-to-action" id="{{ stock.pk }}">
+                                                <img src="{% static 'image/eye.png' %}" alt="">
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        <!-- MESSAGE -->
+                        <span class='no-data' id="no-data">
+                            <!-- javascript -->
+                        </span>
+                    </tbody>
+                </table>
+                <div class="footer">
+                    <div class="pagination__result" id="pagination-result">
+                        <p class="text">
+                            {% if stock_length == 0 %}
+                            {% elif stock_length == 1 %}
+                                Showing <span id="from">1</span> to <span id="to">1</span> of <span class="of">{{ stock_length }}</span> entries    
+                            {% else %}
+                                Showing <span id="from">{% get_first_index_home stocks all_stock %}</span> to <span id="to">{% get_last_index_home stocks all_stock %}</span> of <span class="of">{{ stock_length }}</span> products
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="pagination-btn" id="pagination-buttons">
+                        {% if stocks.has_other_pages %}
+                            {% if stocks.has_previous %}
+                                <a href="?page={{ stocks.previous_page_number }}" class="prev-btn active">
+                                    Previous
+                                </a>
+                            {% else %}
+                                <span style="padding-right: 5px; color: #424242;">Previous</span>
+                            {% endif %}
+                            {% for page_number in stocks.paginator.page_range %}
+                                {% if stocks.number == page_number %}
+                                    <a href="?page={{ page_number }}" class="page-number">
+                                        {{ page_number }}
+                                    </a>
+                                {% elif page_number >= stocks.number|add:-2 and page_number <= stocks.number|add:2 %}
+                                    <a href="?page={{ page_number }}" class="page-number">
+                                        {{ page_number }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if stocks.has_next %}
+                                <a href="?page={{ stocks.next_page_number }}" class="next-btn active">
+                                    Next
+                                </a>
+                            {% else %}
+                                <span style="padding-left: 5px; color: #424242;">Next</span>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'script/search.js' %}"></script>
+    <script src="{% static 'script/modal_action.js' %}"></script>
+    {% endblock content %}

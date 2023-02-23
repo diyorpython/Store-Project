@@ -23,3 +23,4 @@ def send_email_reset_password_task(domain, email_template, subject, email, uid, 
     }
     message = render_to_string(email_template, context_data)
     send_mail(subject, message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
+    print("message")

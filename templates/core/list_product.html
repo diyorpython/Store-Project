@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %} Products {% endblock title %}
 
 {% block content %}
-<div class="container" style="width: 1200px; ">
+<div class="container mt-5" style="width: 1200px;">
     <div class="top" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <h3 style="color: blue; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Products</h3>
+      <h3 style="color: blue; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">{% trans "Products" %}</h3>
       <div class="input-group" style="width: 50%;">
-            <input style="border: 1px solid blue;" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="search" />
+            <input style="border: 1px solid blue;" type="search" class="form-control rounded" placeholder="{% trans 'Search' %}" aria-label="Search" aria-describedby="search-addon" name="search" />
             <button type="button" class="btn btn-outline-primary"><ion-icon name="search-outline"></ion-icon></button>
       </div>
-      <button type="button" class="btn btn-primary"><a href="{% url 'add_product' %}"     style="color: white; text-decoration: none;">+ Add new product</a></button>
+      <button type="button" class="btn btn-primary"><a href="{% url 'add_product' %}"     style="color: white; text-decoration: none;">{% trans '+ Add new product' %}</a></button>
     </div>
     
     <div class="col-md-6 mt-6" style="width:100%;display: flex;">
@@ -18,13 +18,13 @@
             <thead class="table-light">
               <tr>
                 <th>#</th>
-                <th>Datetime</th> 
-                <th>Name</th>
-                <th>Description</th>
-                <th style="text-align: center;">Status</th>
-                <th >Price</th>
-                <th style="width: 45px;">Edit</th>
-                <th style="width: 45px;">Delete</th>
+                <th>{% trans 'Datetime' %}</th> 
+                <th>{% trans 'Name' %}</th>
+                <th>{% trans 'Description' %}</th>
+                <th style="text-align: center;">{% trans 'Status' %}</th>
+                <th>{% trans 'Price' %}</th>
+                <th style="width: 45px;">{% trans 'Edit' %}</th>
+                <th style="width: 45px;">{% trans 'Delete' %}</th>
               </tr>
             </thead>
             {% for item in product %}
@@ -32,13 +32,13 @@
               <tbody>
                 <tr>
                   <td>{{ item.id }}</td>
-                  <td><a style="text-decoration: none; color: black;" href="{% url 'edit_product' item.id %}">{{ item.date_updated }}</a></td>
-                  <td><a style="text-decoration: none ;color: black;" href="{% url 'edit_product' item.id %}">{{ item.name }}</a></td>
-                  <td><a style="text-decoration: none; color: black;" href="{% url 'edit_product' item.id %}">{{ item.description }}</a></td>
+                  <td><a style="text-decoration: none; color: black;" href="{% url 'detail' item.id %}">{{ item.date_updated }}</a></td>
+                  <td><a style="text-decoration: none ;color: black;" href="{% url 'detail' item.id %}">{{ item.name }}</a></td>
+                  <td><a style="text-decoration: none; color: black;" href="{% url 'detail' item.id %}">{{ item.description }}</a></td>
                   {% if item.status == '1' %}
-                        <td><p style="border: 1px solid blue; text-align: center;background-color: blue;color: white; border-radius: 20px;">Active</p></td>
+                        <td><p style="border: 1px solid blue; text-align: center;background-color: blue;color: white; border-radius: 20px;">{% trans 'Active' %}</p></td>
                   {% else %}
-                        <td><p style="text-align: center; border: 1px solid rgb(132, 125, 125, 0.674);background-color:rgba(132, 125, 125, 0.674) ;border-radius: 20px;">Inactive</p></td>
+                        <td><p style="text-align: center; border: 1px solid rgb(132, 125, 125, 0.674);background-color:rgba(132, 125, 125, 0.674) ;border-radius: 20px;">{% trans 'Inactive' %}</p></td>
                   {% endif %}
                   <td>{{ item.price }}$</td>
                   <td><button type="button" class="btn btn-primary" style="margin-right: 3px;"><a style="text-decoration: none; color: white;" href="{% url 'edit_product' item.id %}"><ion-icon name="create-outline"></ion-icon></a></button></td>

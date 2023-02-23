@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %} Delete Invoice {% endblock title %}
 
 {% block content %} 
 
     <div class="container" style="padding-top: 50px; text-align:center;">
         <div class="col-md-12">
-            <h2 style="color:black;">Confirmation</h2>
+            <h2 style="color:black;">{% trans 'Confirmation' %}</h2>
         <br>
-        <h3 style="margin-bottom: 30px;">Are you sure delete that invoice</h3>
-        <button style="margin-right: 30px;" type="button" class="btn btn-primary"><a href="{% url 'delete_confirm' pk %}" style="text-decoration: none; color:black ;">Continue</a></button> <button type="button" class="btn btn-light" style="background-color: rgba(126, 126, 126, 0.574);"><a href="{% url 'invoice' %}">Close</a></button>
+        <h3 style="margin-bottom: 30px;">{% trans 'Do you want to delete' %} <b>{{ deleted_invoice }}</b> {% trans 'invoice on id' %} {{ p_key }}?</h3>
+        <button style="margin-right: 30px;" type="button" class="btn btn-primary"><a href="{% url 'delete_confirm' p_key %}" style="text-decoration: none; color:black ;">{% trans 'Continue' %}</a></button> <button type="button" class="btn btn-light" style="background-color: rgba(126, 126, 126, 0.574);"><a href="{% url 'invoice' %}">{% trans 'Close' %}</a></button>
         </div>
     </div>
+
+    
+
+
+{% endblock content %}
 
     
 

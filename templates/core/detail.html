@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block title %} {% trans 'Detail' %} {% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-3 my-5">
+            <h1 class="text-center text-primary">{% trans 'Detail' %}</h1>
+          <div class="all">
+            <div class="box1">
+                <h3>{% trans 'Category' %}</h3>
+                <h4 style="border: 1px solid #000; width: 650px; padding: 10px;">{{ detail.category }}</h4>
+            </div>
+            <div class="box1">
+                <h3>{% trans 'Product name' %}</h3>
+                <h4 style="border: 1px solid #000; width: 650px; padding: 10px;">{{ detail.name }}</h4>
+            </div>
+            <div class="box1">
+                <h3>{% trans 'Code' %}</h3>
+                <h4 style="border: 1px solid #000; width: 650px; padding: 10px;">{{ detail.code }}</h4>
+            </div>
+            <div class="box1">
+                <h3>{% trans 'Product description' %}</h3>
+                <h4 style="border: 1px solid #000; width: 650px; height: auto; padding: 10px;">{{ detail.description }}</h4>
+            </div>
+            <div class="box1">
+                <h3>{% trans 'Product price' %}</h3>
+                <h4 style="border: 1px solid #000; width: 650px; padding: 10px;">{{ detail.price }}</h4>
+            </div>
+            <div class="box1">
+                
+                <h3>Product status*</h3>
+                {% if  detail.status == '0' %}
+                    <h4 style="background-color: red;padding: 1px; text-align: center; color: #fff; width: 20%; border-radius: 15px;">{% trans 'InActive' %}</h4>
+                {% else %}               
+                    <h4 style="background-color: blue;padding: 1px; text-align: center; color: #fff; width: 20%; border-radius: 15px;">{% trans 'Active' %}</h4>
+                {% endif %}
+               </div>
+               <button type="button" class="btn btn-light" style="border-radius: 5px;background-color: rgba(126, 126, 126, 0.574); "><a style="text-decoration: none; color: black;" href="{% url 'product_list' %}">{% trans 'Close' %}</a></button>
+            
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
